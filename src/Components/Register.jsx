@@ -44,7 +44,7 @@ const Register = () => {
     // --- Validation Logic ---
     if (firstName.trim().length < 3) validationErrors.push("First name too short");
     if (lastName.trim().length < 3) validationErrors.push("Last name too short");
-    if (!isValidEmail(email)) validationErrors.push("Invalid email format"); // More specific message
+    if (!isValidEmail(email)) validationErrors.push("Invalid email format"); 
     if (!isValidPhoneNumber(phoneNumber)) validationErrors.push("Phone number must be 10 digits");
     if (username.trim().length < 3) validationErrors.push("Username too short (min 3 characters)");
     if (password.length < 8) validationErrors.push("Password must be 8+ characters");
@@ -70,7 +70,7 @@ const Register = () => {
     }
 
     const newUser = { ...formData };
-    delete newUser.confirmPassword; // Don't store confirmPassword
+    delete newUser.confirmPassword;
     users.push(newUser);
     localStorage.setItem("users", JSON.stringify(users));
 
@@ -80,15 +80,15 @@ const Register = () => {
   };
 
   return (
-    <div className="auth-container"> {/* Consistent container class */}
-      <div className="auth-card"> {/* Consistent card class */}
-        <div className="icon-center"> {/* Consistent header styling */}
-          <ChefHat size={50} color="#e91e63" /> {/* Use the pink color from CSS */}
+    <div className="auth-container">
+      <div className="auth-card"> 
+        <div className="icon-center"> 
+          <ChefHat size={50} color="#e91e63" /> 
         </div>
-        <h2 className="auth-title">Create Your Account</h2> {/* Consistent title class */}
-        <p className="auth-subtext"> {/* Consistent subtext class */}
+        <h2 className="auth-title">Create Your Account</h2> 
+        <p className="auth-subtext"> 
             Already have an account?{" "}
-            <Link to="/signin" className="auth-link"> {/* Consistent link class */}
+            <Link to="/signin" className="auth-link"> 
               Sign in
             </Link>
         </p>
@@ -103,7 +103,7 @@ const Register = () => {
           </div>
         )}
 
-        <form onSubmit={handleSubmit}> {/* Removed .register-form, form handles styling */}
+        <form onSubmit={handleSubmit}> 
           <input
             type="text"
             name="username"
@@ -149,7 +149,7 @@ const Register = () => {
             className="auth-input" 
             required
           />
-          <div style={{ position: "relative" }}> {/* Inline style for positioning toggle */}
+          <div style={{ position: "relative" }}>
             <input
               type={showPassword ? "text" : "password"}
               name="password"
@@ -163,10 +163,10 @@ const Register = () => {
               className="password-toggle" 
               onClick={() => setShowPassword(!showPassword)}
             >
-              {showPassword ? <EyeOff size={20} /> : <Eye size={20} />} {/* Icon size consistent */}
+              {showPassword ? <EyeOff size={20} /> : <Eye size={20} />} 
             </span>
           </div>
-          <div style={{ position: "relative" }}> {/* Inline style for positioning toggle */}
+          <div style={{ position: "relative" }}>
             <input
               type={showConfirmPassword ? "text" : "password"}
               name="confirmPassword"
@@ -180,10 +180,10 @@ const Register = () => {
               className="password-toggle" 
               onClick={() => setShowConfirmPassword(!showConfirmPassword)}
             >
-              {showConfirmPassword ? <EyeOff size={20} /> : <Eye size={20} />} {/* Icon size consistent */}
+              {showConfirmPassword ? <EyeOff size={20} /> : <Eye size={20} />} 
             </span>
           </div>
-          <button type="submit" disabled={loading} className="auth-btn"> {/* Consistent button class */}
+          <button type="submit" disabled={loading} className="auth-btn"> 
             {loading ? "Creating..." : "Create Account"}
           </button>
         </form>
