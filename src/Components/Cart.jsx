@@ -46,10 +46,11 @@ const CartPage = () => {
   };
 
   // "Clear Cart" 
-  const handleClearCart = () => {
-    setCart([]);
-  };
 
+const handleClearCart = () => {
+  setCart([]); // clear state
+  localStorage.removeItem('cart'); 
+};
  
   return (
     <div className="cart-page-container">
