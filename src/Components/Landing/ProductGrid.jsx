@@ -58,7 +58,7 @@ const ProductGrid = ({ products, addToCart, onQuickView }) => {
                 padding: '15px 60px', 
                 borderRadius: '50px',
                 fontSize: '18px',
-                // Corrected 'var(white)' to 'white' or a defined CSS variable like 'var(--white-color)'
+                
                 backgroundColor: 'white', 
                 color: 'var(--primary-color)'
               }}
