@@ -1,0 +1,169 @@
+/* =============================
+   Common Login & Register Styles
+   ============================= */
+
+.auth-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: linear-gradient(to bottom right, #fff0f5,  #2c3e50);
+  padding: 1rem;
+}
+
+.auth-card {
+  width: 100%;
+  max-width: 420px;
+  background: #fff;
+  border-radius: 1rem;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+  transition: all 0.3s ease;
+}
+
+.auth-card:hover {
+  transform: translateY(-2px);
+}
+
+/* Centralized icon and text for header */
+.icon-center {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.icon-center svg {
+  color: #e91e63; /* Consistent icon color */
+  width: 48px;
+  height: 48px;
+}
+
+.auth-title {
+  text-align: center;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 0.75rem; /* Added margin for spacing */
+}
+
+.auth-subtext {
+  text-align: center;
+  font-size: 0.9rem;
+  color: #666;
+  margin-top: 0.5rem;
+  margin-bottom: 1.5rem; /* Added margin for spacing below subtext */
+}
+
+.auth-link { /* Changed from .auth-subtext a to a dedicated class for better control */
+  color: #e91e63;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.auth-link:hover {
+  text-decoration: underline;
+}
+
+.auth-input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid #ddd;
+  border-radius: 0.5rem;
+  margin-bottom: 1rem; /* Consistent spacing between inputs */
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+/* Remove bottom margin for the last input if it's followed by a button */
+form > div:last-of-type > .auth-input,
+form > .auth-input:last-of-type {
+    margin-bottom: 1.5rem; /* Adjust as needed for spacing before button */
+}
+/* If the last element is the password field div, apply margin to that */
+form > div:last-of-type:has(.password-toggle) {
+    margin-bottom: 1.5rem;
+}
+
+
+.auth-input:focus {
+  border-color: #e91e63;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(233, 30, 99, 0.15);
+}
+
+.password-toggle {
+  position: absolute;
+  top: 50%; /* Center vertically */
+  right: 12px; /* Adjusted right position */
+  transform: translateY(-50%); /* Fine-tune vertical centering */
+  color: #777;
+  cursor: pointer;
+  transition: color 0.2s ease;
+  display: flex; /* Ensure the icon itself is centered if it's not perfectly square */
+  align-items: center;
+  height: 100%; /* Take full height of parent for easier clicking */
+}
+
+.password-toggle:hover {
+  color: #e91e63;
+}
+
+.auth-btn {
+  width: 100%;
+  background: #e91e63;
+  color: #fff;
+  padding: 0.8rem;
+  border: none;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.auth-btn:hover:not(:disabled) { /* Hover effect only when not disabled */
+  background: #d81b60;
+  transform: translateY(-1px);
+}
+
+.auth-btn:disabled {
+  background: #cccccc; /* Greyed out when disabled */
+  cursor: not-allowed;
+  opacity: 0.8;
+}
+
+.auth-error {
+  color: #e63946;
+  text-align: center;
+  font-size: 0.9rem;
+  margin-bottom: 1.5rem; /* Added margin for spacing */
+  padding: 0.75rem;
+  background-color: #ffe0e2;
+  border: 1px solid #e63946;
+  border-radius: 0.5rem;
+}
+
+/* Styles for Register component's error box */
+.error-box {
+  background-color: #ffe0e2;
+  border: 1px solid #e63946;
+  color: #e63946;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  margin-bottom: 1.5rem; /* Consistent spacing */
+  font-size: 0.9rem;
+}
+
+.error-box ul {
+  list-style-type: none; /* Remove bullet points */
+  margin: 0;
+  padding: 0;
+}
+
+.error-box li {
+  margin-bottom: 0.5rem;
+}
+
+.error-box li:last-child {
+  margin-bottom: 0;
+}
+
