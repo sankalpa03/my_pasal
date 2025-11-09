@@ -104,7 +104,7 @@ function DigitalPayments() {
   return (
     <div className="modal-section">
       <h1>Digital Payments</h1>
-      <p>We support secure digital payments via eSewa, Khalti, and other platforms.</p>
+      <p>We support secure digital payments via eSewa.</p>
     </div>
   );
 }

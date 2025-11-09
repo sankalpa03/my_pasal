@@ -1,0 +1,300 @@
+/* =========================
+   Wrapper & Page Layout
+========================= */
+.profile-wrapper {
+  max-width: 800px;
+  margin: 50px auto;
+  padding: 40px;
+  background: linear-gradient(135deg, #ffffff, #f3f7fa);
+  border-radius: 20px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+  font-family: 'Poppins', sans-serif;
+  animation: fadeIn 0.6s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =========================
+   Headers
+========================= */
+.profile-header, .settings-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.profile-header h1, .settings-header h1 {
+  font-size: 1.8rem;
+  color: #333;
+  margin: 10px 0 5px;
+}
+
+.profile-header p {
+  color: #777;
+}
+
+/* =========================
+   Tabs
+========================= */
+.profile-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.tab {
+  background: none;
+  border: 2px solid transparent;
+  font-weight: 600;
+  font-size: 1rem;
+  color: #555;
+  padding: 8px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.tab:hover {
+  border-color: #007bff;
+  color: #007bff;
+}
+
+.tab.active {
+  background: #007bff;
+  color: white;
+  box-shadow: 0 4px 10px rgba(0, 123, 255, 0.3);
+}
+
+/* =========================
+   Profile Card & Sections
+========================= */
+.profile-card, .password-section {
+  background: #fafafa;
+  padding: 25px;
+  border-radius: 15px;
+  margin-top: 20px;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.05);
+}
+
+.profile-card h3, .password-section h2 {
+  margin-bottom: 15px;
+  color: #333;
+  border-bottom: 2px solid #eee;
+  padding-bottom: 8px;
+}
+
+.info-grid p {
+  background: #f8f9fb;
+  padding: 10px 14px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  color: #555;
+}
+
+/* =========================
+   Forms & Inputs
+========================= */
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+}
+
+.form-grid label {
+  grid-column: span 2;
+  font-weight: 600;
+  color: #444;
+}
+
+.form-grid input {
+  grid-column: span 2;
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+}
+
+.form-grid input:focus {
+  border-color: #0077ff;
+  outline: none;
+  box-shadow: 0 0 5px rgba(0,119,255,0.2);
+}
+
+/* =========================
+   Buttons
+========================= */
+.button-group {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.save-btn {
+  background: #0077ff;
+  color: #fff;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.save-btn:hover {
+  background: #005fcc;
+}
+
+.cancel-btn {
+  background: #f5f5f5;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.cancel-btn:hover {
+  background: #ddd;
+}
+
+.back-btn {
+  background: #f5f5f5;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: background 0.2s;
+}
+
+.back-btn:hover {
+  background: #ddd;
+}
+
+/* =========================
+   Profile Picture
+========================= */
+.profile-picture-wrapper {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.profile-picture, .profile-avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #0077ff;
+  margin-bottom: 10px;
+}
+
+.camera-icon {
+  position: absolute;
+  bottom: 0;
+  right: calc(50% - 60px);
+  background: #0077ff;
+  color: white;
+  padding: 8px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+}
+
+.camera-icon:hover {
+  background: #005fcc;
+}
+
+.camera-icon input {
+  display: none;
+}
+
+/* =========================
+   Notifications
+========================= */
+.message, .notification {
+  padding: 10px 15px;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  font-weight: 500;
+  text-align: center;
+}
+
+.message {
+  background-color: #e9f8ee;
+  color: #2e7d32;
+  border: 1px solid #b2dfdb;
+}
+
+.error, .notification.error {
+  background-color: #fdecea;
+  color: #c62828;
+  border: 1px solid #f5c6cb;
+}
+
+.notification.success {
+  background-color: #e9f8ee;
+  color: #2e7d32;
+  border: 1px solid #b2dfdb;
+}
+
+/* =========================
+   Settings link button
+========================= */
+.settings-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: #0077ff;
+  color: #fff;
+  padding: 6px 12px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.settings-link:hover {
+  background: #005fcc;
+}
+
+/* =========================
+   Responsive
+========================= */
+@media (max-width: 600px) {
+  .profile-wrapper {
+    margin: 20px;
+    padding: 20px;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .button-group {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .camera-icon {
+    right: 45%;
+  }
+}

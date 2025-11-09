@@ -8,7 +8,7 @@ const Navbar = ({ cartItemsCount, searchTerm, setSearchTerm, isLandingPage = fal
   const profileRef = useRef(null);
   const timerRef = useRef(null);
 
-  // ✅ Handle profile hover or click
+  // Handle profile hover or click
   const handleProfileOpen = () => {
     clearTimeout(timerRef.current);
     if (!isLandingPage) setShowProfileMenu(true);
@@ -22,7 +22,7 @@ const Navbar = ({ cartItemsCount, searchTerm, setSearchTerm, isLandingPage = fal
     }, 2000);
   };
 
-  // ✅ Close dropdown if clicked outside
+  // Close dropdown if clicked outside
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (profileRef.current && !profileRef.current.contains(event.target)) {
@@ -36,7 +36,7 @@ const Navbar = ({ cartItemsCount, searchTerm, setSearchTerm, isLandingPage = fal
     };
   }, []);
 
-  // ✅ Navigation handler
+  // Navigation handler
   const handleNavClick = (e, path) => {
     e.preventDefault();
     if (isLandingPage) {
@@ -97,7 +97,7 @@ const Navbar = ({ cartItemsCount, searchTerm, setSearchTerm, isLandingPage = fal
                   <button onClick={(e) => handleNavClick(e, "/profile")} className="menu-item">
                     Profile
                   </button>
-                  <button onClick={(e) => handleNavClick(e, "/settings")} className="menu-item">
+                  <button onClick={(e) => handleNavClick(e, "/setting")} className="menu-item">
                     Settings
                   </button>
                   <button onClick={(e) => handleNavClick(e, "/signin")} className="menu-item logout-btn">
@@ -106,6 +106,16 @@ const Navbar = ({ cartItemsCount, searchTerm, setSearchTerm, isLandingPage = fal
                 </div>
               )}
             </div>
+
+            {/* ✅ Login Button - only show on landing page */}
+            {isLandingPage && (
+              <button
+                onClick={() => navigate("/signin")}
+                className="login-btn"
+              >
+                Login
+              </button>
+            )}
           </div>
         </div>
       </div>

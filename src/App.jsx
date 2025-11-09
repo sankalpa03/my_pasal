@@ -9,8 +9,10 @@ import Home from "./Components/Home";
 import SignIn from "./Components/SignIn";
 import Register from "./Components/Register";
 import Cart from "./Components/Cart";
+import Profile from "./Components/profile";
+import  Settings from "./Components/setting";
 
-const LayoutWrapper = ({ children }) => {
+  const LayoutWrapper = ({ children }) => {
   const location = useLocation();
 
   //  Hide Navbar
@@ -41,6 +43,10 @@ function App() {
           <Route path="/" element={<LandingPage />} />
           <Route path="/signin" element={<SignIn />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/setting" element={<Settings />} />
+
+
           <Route
             path="/home"
             element={
