@@ -27,6 +27,7 @@ const LandingPage = () => {
   const filteredProducts = products.filter(
     (p) => selectedCategory === "all" || p.category === selectedCategory
   );
+  
 
   const handleAddToCart = (product, quantity = 1) => {
     const user = JSON.parse(localStorage.getItem("user"));
