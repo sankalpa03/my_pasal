@@ -15,7 +15,6 @@ const Navbar = ({ cartItemsCount, searchTerm, setSearchTerm, isLandingPage = fal
   };
 
   const handleProfileClose = () => {
-    // wait 2 seconds before closing
     clearTimeout(timerRef.current);
     timerRef.current = setTimeout(() => {
       setShowProfileMenu(false);
@@ -107,7 +106,7 @@ const Navbar = ({ cartItemsCount, searchTerm, setSearchTerm, isLandingPage = fal
               )}
             </div>
 
-            {/* ✅ Login Button - only show on landing page */}
+            {/* Login Button only show on landing page */}
             {isLandingPage && (
               <button
                 onClick={() => navigate("/signin")}
