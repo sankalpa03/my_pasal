@@ -73,4 +73,5 @@ const ProductGrid = ({ products, addToCart, onQuickView }) => {
   );
 };
 
+
 export default ProductGrid;
