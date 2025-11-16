@@ -69,6 +69,7 @@ const ProductCard = ({ product, addToCart, onQuickView }) => {
           <div className="notification-content">
             <span className="emoji">✅</span>
             <div>
+              
               <strong>Added to Cart!</strong>
               <p>{quantity}× {product.name}</p>
             </div>
