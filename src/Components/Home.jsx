@@ -1,5 +1,5 @@
 // src/Components/Home.jsx
-import React, { useState, useEffect } from "react"; // Added useEffect for initial cart count logic
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Categories from "./Landing/Categories";
 import ProductGrid from "./Landing/ProductGrid";
