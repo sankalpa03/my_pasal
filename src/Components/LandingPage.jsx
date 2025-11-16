@@ -12,8 +12,6 @@ const LandingPage = () => {
   const [quickViewProduct, setQuickViewProduct] = useState(null);
 
   const navigate = useNavigate();
-
-
   const handleNavClick = (e, path) => {
     e.preventDefault();
 
