@@ -1,65 +1,68 @@
-import React, { useState } from "react";
+// src/Components/Home.jsx
+import React, { useState, useEffect } from "react"; // Added useEffect for initial cart count logic
 import { useNavigate } from "react-router-dom";
-
 import Categories from "./Landing/Categories";
 import ProductGrid from "./Landing/ProductGrid";
+import { products, categories } from "../Components/Landing/data";
 
-// import ProductCard from "./Landing/ProductCard"; 
-import { products, categories } from "./Landing/data";
-
-const Home = () => {
+const Home = ({ searchTerm, setSearchTerm, setGlobalCartCount }) => {
   const [selectedCategory, setSelectedCategory] = useState("all");
   const navigate = useNavigate();
 
-  // Filter products by category
+  useEffect(() => {
+    const updateCartCountFromStorage = () => {
+      const cart = JSON.parse(localStorage.getItem("cart")) || [];
+      const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+      if (setGlobalCartCount) {
+        setGlobalCartCount(totalItems);
+      }
+    };
+
+    updateCartCountFromStorage();
+   
+  }, [setGlobalCartCount]); 
   const filteredProducts = products.filter(
-    (p) => selectedCategory === "all" || p.category === selectedCategory
+    (p) =>
+      (selectedCategory === "all" || p.category === selectedCategory) &&
+      (p.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+       p.description.toLowerCase().includes(searchTerm.toLowerCase())) // Added search filter
   );
 
+  const handleAddToCart = (product) => {
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-  const handleAddToCart = (product, quantity = 1) => {
-    console.log("Home: handleAddToCart called for", product.name, "with quantity", quantity);
+    const existing = cart.find((item) => item.id === product.id);
 
-    // Load cart from localStorage
-    const cart = JSON.parse(localStorage.getItem("cart")) || [];
-    console.log("Home: Cart before update:", cart);
-
-    // Check if product already exists
-    const existingItem = cart.find((item) => item.id === product.id);
-    if (existingItem) {
-      existingItem.quantity += quantity; 
-      console.log("Home: Updated quantity for existing item:", product.name);
+    if (existing) {
+      existing.quantity += 1;
     } else {
-      cart.push({ ...product, quantity: quantity }); 
-      console.log("Home: Added new item to cart:", product.name);
+      cart.push({ ...product, quantity: 1 });
     }
 
-    // Save updated cart
     localStorage.setItem("cart", JSON.stringify(cart));
-    console.log("Home: Cart saved to localStorage:", JSON.parse(localStorage.getItem("cart")));
 
-
-    
+    // update the  cart count when an item is added
+    if (setGlobalCartCount) {
+      setGlobalCartCount((prevCount) => prevCount + 1);
+    }
   };
 
-  const handleQuickView = (product) => {
+  const handleActionToQuickViewPage = (product) => {
+    navigate(`/product-details/${encodeURIComponent(product.name)}`);
   };
-
 
   return (
     <div className="min-h-screen bg-pink-50">
-      
-      <Categories
+\      <Categories
         categories={categories}
         selectedCategory={selectedCategory}
         setSelectedCategory={setSelectedCategory}
       />
-      <ProductGrid 
-        products={filteredProducts} 
-        addToCart={handleAddToCart} 
-        onQuickView={handleQuickView}
+      <ProductGrid
+        products={filteredProducts}
+        addToCart={handleAddToCart}
+        onQuickView={handleActionToQuickViewPage}
       />
-      
     </div>
   );
 };

@@ -1,3 +1,4 @@
+// Landing/ProductGrid.jsx
 import React from 'react';
 import ProductCard from './ProductCard';
 
@@ -17,7 +18,7 @@ const ProductGrid = ({ products, addToCart, onQuickView }) => {
                 SHOP ALL PRODUCTS
               </button>
             </div>
-            
+
             <div className="products-grid">
               {flashSaleProducts.map(product => (
                 <ProductCard
@@ -38,7 +39,7 @@ const ProductGrid = ({ products, addToCart, onQuickView }) => {
           <div className="section-header">
             <h2 className="section-title">Just For You</h2>
           </div>
-          
+
           <div className="products-grid">
             {regularProducts.map(product => (
               <ProductCard
@@ -52,14 +53,13 @@ const ProductGrid = ({ products, addToCart, onQuickView }) => {
 
           {/* Load More Button */}
           <div style={{ textAlign: 'center', marginTop: '50px' }}>
-            <button 
+            <button
               className="add-to-cart-btn"
-              style={{ 
-                padding: '15px 60px', 
+              style={{
+                padding: '15px 60px',
                 borderRadius: '50px',
                 fontSize: '18px',
-                
-                backgroundColor: 'white', 
+                backgroundColor: 'white',
                 color: 'var(--primary-color)'
               }}
               onClick={() => alert('Loading more products... This feature would load additional products from the server.')}

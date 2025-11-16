@@ -1,16 +1,15 @@
 import React, { useState } from "react";
 import "./footer.css";
 
-// Modal Pages
+// --- Modal Pages ---
 
-// Help Center
 function HelpCenter() {
   const faqs = [
     { question: "How do I place an order?", answer: "Browse products, add them to your cart, and checkout." },
     { question: "What payment methods are available?", answer: "We accept Cash on Delivery and eSewa." },
     { question: "How do I return a product?", answer: "Request a return within 7 days of delivery via our Returns page." },
     { question: "Can I cancel an order?", answer: "Yes, you can cancel before it’s shipped from your orders page." },
-    { question: "How can I track my order?", answer: "You can track your order in the 'My Orders' section after logging in." },
+    { question: "How can I track my order?", answer: "Track your order in the 'My Orders' section after logging in." },
     { question: "How can I contact customer support?", answer: "Reach us via our Contact Us page or email sankalpa085@gmail.com" },
     { question: "Do you offer discounts?", answer: "Yes, we offer seasonal discounts and promo codes." },
     { question: "Is my personal information safe?", answer: "Absolutely. We follow strict privacy policies and encryption methods." },
@@ -30,46 +29,40 @@ function HelpCenter() {
   );
 }
 
-// How to Buy
 function HowToBuy() {
   return (
     <div className="modal-section">
       <h1>How to Buy</h1>
       <ol className="buy-steps">
-        <li>Browse the products on our website.</li>
-        <li>Select the product you want and click "Add to Cart".</li>
-        <li>Go to your Cart and click "Checkout".</li>
-        <li>Fill in your shipping and contact details.</li>
-        <li>Select your payment method (Cash on Delivery, eSewa).</li>
+        <li>Browse products on our website.</li>
+        <li>Select your item and click “Add to Cart”.</li>
+        <li>Go to your cart and click “Checkout”.</li>
+        <li>Fill in your shipping details.</li>
+        <li>Select payment method (Cash on Delivery / eSewa).</li>
         <li>Confirm your order and wait for delivery.</li>
-        <li>You can track your order in "My Orders" section.</li>
       </ol>
     </div>
   );
 }
 
-// Returns & Refunds
 function ReturnsRefunds() {
   return (
     <div className="modal-section">
       <h1>Returns & Refunds</h1>
-      <p>We want you to be satisfied with your purchase. If you wish to return a product:</p>
       <ol className="return-steps">
-        <li>Request a return within 7 days of delivery through your Orders page.</li>
+        <li>Request a return within 7 days of delivery.</li>
         <li>Ensure the product is unused and in original packaging.</li>
-        <li>Our support team will guide you for pick-up or drop-off.</li>
-        <li>Once the product is received and inspected, your refund will be processed within 5-7 business days.</li>
+        <li>Our team will guide you for pick-up or drop-off.</li>
+        <li>Refunds are processed within 5–7 business days after inspection.</li>
       </ol>
     </div>
   );
 }
 
-// Contact Us
 function ContactUs() {
   return (
     <div className="modal-section">
       <h1>Contact Us</h1>
-      <p>We’re here to help! You can reach us in multiple ways:</p>
       <ul className="contact-list">
         <li>Email: <a href="mailto:sankalpa085@gmail.com">sankalpa085@gmail.com</a></li>
         <li>Phone: +977-9804182759</li>
@@ -79,57 +72,52 @@ function ContactUs() {
   );
 }
 
-// Terms & Conditions
 function Terms() {
   return (
     <div className="modal-section">
       <h1>Terms and Conditions</h1>
-      <p>Welcome to Pasal! By using our services, you agree to comply with our terms and conditions.</p>
+      <p>By using Pasal, you agree to our terms regarding product use, delivery, and returns.</p>
     </div>
   );
 }
 
-// Privacy Policy
 function Privacy() {
   return (
     <div className="modal-section">
       <h1>Privacy Policy</h1>
-      <p>Your privacy is important to us. We collect and use your data responsibly.</p>
+      <p>Your privacy is important to us. We do not share your data with third parties.</p>
     </div>
   );
 }
 
-// Digital Payments
 function DigitalPayments() {
   return (
     <div className="modal-section">
       <h1>Digital Payments</h1>
-      <p>We support secure digital payments via eSewa.</p>
+      <p>We support secure digital transactions via eSewa and other trusted platforms.</p>
     </div>
   );
 }
 
-// Cash on Delivery
 function CashOnDelivery() {
   return (
     <div className="modal-section">
       <h1>Cash on Delivery</h1>
-      <p>Pay when your order arrives at your doorstep. No online payment required.</p>
+      <p>Pay when your order arrives — simple, secure, and convenient.</p>
     </div>
   );
 }
 
-// eSewa Payment
 function ESewa() {
   return (
     <div className="modal-section">
       <h1>eSewa Payment</h1>
-      <p>Secure online payment via eSewa wallet. Instant and safe transaction.</p>
+      <p>Make instant and secure online payments via your eSewa wallet.</p>
     </div>
   );
 }
 
-// Footer Component
+// --- Footer Component ---
 function Footer() {
   const [modalContent, setModalContent] = useState(null);
   const openModal = (type) => setModalContent(type);
@@ -139,7 +127,6 @@ function Footer() {
     <>
       <footer className="footer">
         <div className="footer-content">
-          {/* Customer Care */}
           <div className="customer-care">
             <h3>Customer Care</h3>
             <ul>
@@ -150,7 +137,6 @@ function Footer() {
             </ul>
           </div>
 
-          {/* About Pasal */}
           <div className="about-parcel">
             <h3>About Pasal</h3>
             <ul>
@@ -160,7 +146,6 @@ function Footer() {
             </ul>
           </div>
 
-          {/* Payment Methods */}
           <div className="payment-methods">
             <h3>Payment Methods</h3>
             <ul>
@@ -169,13 +154,16 @@ function Footer() {
             </ul>
           </div>
         </div>
+
+        <div className="footer-bottom">
+          © 2025 <span className="brand">Pasal</span>. All Rights Reserved.
+        </div>
       </footer>
 
-      {/* Modal */}
       {modalContent && (
         <div className="modal-overlay" onClick={closeModal}>
           <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-            <button className="close-btn" onClick={closeModal}>X</button>
+            <button className="close-btn" onClick={closeModal}>×</button>
             {modalContent === "help" && <HelpCenter />}
             {modalContent === "buy" && <HowToBuy />}
             {modalContent === "returns" && <ReturnsRefunds />}

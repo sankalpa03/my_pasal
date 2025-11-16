@@ -75,7 +75,7 @@ const Navbar = ({ cartItemsCount, searchTerm, setSearchTerm, isLandingPage = fal
             {/* Cart */}
             <button onClick={(e) => handleNavClick(e, "/cart")} className="icon-btn">
               🛒
-              {cartItemsCount > 0 && <span className="cart-badge">{cartItemsCount}</span>}
+             {!isLandingPage && cartItemsCount > 0 && <span className="cart-badge">{cartItemsCount}</span>}
             </button>
 
             {/* Profile */}
@@ -100,7 +100,7 @@ const Navbar = ({ cartItemsCount, searchTerm, setSearchTerm, isLandingPage = fal
                   <button onClick={(e) => handleNavClick(e, "/setting")} className="menu-item">
                     Settings
                   </button>
-                  <button onClick={(e) => handleNavClick(e, "/signin")} className="menu-item logout-btn">
+                  <button onClick={(e) => handleNavClick(e, "/")} className="menu-item logout-btn">
                     Logout
                   </button>
                 </div>

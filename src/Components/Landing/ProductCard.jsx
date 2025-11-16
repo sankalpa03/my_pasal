@@ -6,13 +6,11 @@ const ProductCard = ({ product, addToCart, onQuickView }) => {
 
   const handleQuantityChange = (change) => {
     const newQuantity = quantity + change;
-    if (newQuantity >= 1 && newQuantity <= 99) {
-      setQuantity(newQuantity);
-    }
+    if (newQuantity >= 1 && newQuantity <= 99) setQuantity(newQuantity);
   };
 
   const handleAddToCart = () => {
-    addToCart(product, quantity); // This correctly passes product and quantity to the prop
+    addToCart(product, quantity);
     setShowNotification(true);
     setTimeout(() => setShowNotification(false), 2000);
   };
@@ -40,25 +38,26 @@ const ProductCard = ({ product, addToCart, onQuickView }) => {
 
         <div className="product-info">
           <h3 className="product-name">{product.name}</h3>
-
           <div className="product-rating">
             <span className="stars">{renderStars(product.rating)}</span>
             <span className="rating-count">({product.rating.toFixed(1)})</span>
           </div>
-
-          <div className="product-price">Rs. {product.price}</div>
-          <div className="product-sold">{product.sold.toLocaleString()} sold</div>
-
-          <div className="product-actions">
+          <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "10px" }}>
+            <span className="product-price">Rs.{product.price}</span>
+          </div>
+          <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "15px" }}>
+            <span className="product-sold">{product.sold.toLocaleString()} sold</span>
             <div className="quantity-control">
               <button className="qty-btn" onClick={() => handleQuantityChange(-1)}>-</button>
               <span className="qty-display">{quantity}</span>
               <button className="qty-btn" onClick={() => handleQuantityChange(1)}>+</button>
             </div>
-
-            <button className="quick-view-btn" onClick={() => onQuickView(product)}>Quick View</button>
-
-            <button className="add-to-cart-btn" onClick={handleAddToCart}>
+          </div>
+          <div className="product-actions">
+            <button className="action-btn" onClick={() => onQuickView(product)}>
+              Quick View
+            </button>
+            <button className="action-btn" onClick={handleAddToCart}>
               Add to Cart
             </button>
           </div>

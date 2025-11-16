@@ -1,218 +1,220 @@
-/* ===========================
-   Footer Base
-=========================== */
+/* ====== FOOTER STYLING ====== */
 .footer {
-  background-color: #111;
-  color: #fff;
-  padding: 50px 20px;
-  font-family: 'Poppins', sans-serif;
-  border-top: 4px solid #1da1f2;
+  background: #111;
+  color: #f5f5f5;
+  padding: 60px 80px 30px;
+  border-top: 3px solid #3498db;
+  font-family: "Segoe UI", Arial, sans-serif;
 }
 
 .footer-content {
   display: flex;
-  flex-wrap: wrap;
   justify-content: space-between;
-  max-width: 1200px;
-  margin: auto;
-  gap: 30px;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 60px;
 }
 
-.footer h3 {
+.footer-content > div {
+  flex: 1;
+  min-width: 220px;
+}
+
+.footer-content h3 {
   font-size: 20px;
-  margin-bottom: 20px;
-  color: #fff;
+  color: #ffffff;
+  margin-bottom: 18px;
+  position: relative;
   font-weight: 600;
 }
 
-.footer ul {
+.footer-content h3::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 60px;
+  height: 3px;
+  background-color: #f1c40f;
+  border-radius: 3px;
+}
+
+.footer-content ul {
   list-style: none;
   padding: 0;
   margin: 0;
 }
 
-.footer ul li {
-  margin: 12px 0;
+.footer-content ul li {
+  color: #ddd;
+  font-size: 15px;
+  margin: 10px 0;
   cursor: pointer;
   transition: all 0.3s ease;
   display: flex;
   align-items: center;
+  gap: 6px;
 }
 
-.footer ul li:hover {
-  color: #1da1f2;
-  transform: translateX(5px);
+.footer-content ul li:hover {
+  color: #ffffff;
+  transform: translateX(4px);
 }
 
-/* ===========================
-   Modal Overlay & Content
-=========================== */
+/* ====== ICON STYLING ====== */
+.footer-content ul li::before {
+  content: "📄";
+  font-size: 15px;
+  opacity: 0.8;
+}
+
+.customer-care ul li::before {
+  content: "📞";
+  color: #ff69b4;
+}
+
+.payment-methods ul li::before {
+  content: "💳";
+  color: #1abc9c;
+}
+
+/* ====== FOOTER BOTTOM ====== */
+.footer-bottom {
+  text-align: center;
+  color: #bbb;
+  font-size: 14px;
+  padding-top: 35px;
+  margin-top: 40px;
+  border-top: 1px solid #333;
+  letter-spacing: 0.5px;
+}
+
+.footer-bottom .brand {
+  color: #f1c40f;
+  font-weight: 600;
+}
+
+/* ====== MODAL STYLING ====== */
 .modal-overlay {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.65);
+  background-color: rgba(17, 17, 17, 0.75);
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 1000;
-  padding: 15px;
-  backdrop-filter: blur(4px);
+  z-index: 2000;
   animation: fadeIn 0.3s ease;
 }
 
+.modal-content {
+  background: #ffffff;
+  color: #222;
+  width: 90%;
+  max-width: 700px;
+  max-height: 80vh;
+  overflow-y: auto;
+  border-radius: 12px;
+  padding: 30px 40px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+  position: relative;
+  animation: slideUp 0.3s ease;
+}
+
+.close-btn {
+  position: absolute;
+  top: 14px;
+  right: 16px;
+  background: #f1c40f;
+  color: #000;
+  border: none;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 5px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.close-btn:hover {
+  background: #e67e22;
+  color: #fff;
+}
+
+/* ====== MODAL INNER ====== */
+.modal-section h1 {
+  font-size: 26px;
+  color: #2c3e50;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #db3434;
+  display: inline-block;
+  padding-bottom: 4px;
+}
+
+.modal-section p, 
+.modal-section li {
+  font-size: 16px;
+  color: #444;
+  line-height: 1.7;
+}
+
+.faq-list .faq-item {
+  margin-bottom: 18px;
+  background: #f8f9fa;
+  border-radius: 10px;
+  padding: 15px 18px;
+  border-left: 4px solid #db3434;
+}
+
+.buy-steps, .return-steps, .contact-list {
+  padding-left: 20px;
+}
+
+.contact-list a {
+  color: #4d36e0;
+  text-decoration: none;
+}
+
+.contact-list a:hover {
+  text-decoration: underline;
+}
+
+/* ====== ANIMATIONS ====== */
 @keyframes fadeIn {
   from { opacity: 0; }
   to { opacity: 1; }
 }
 
-.modal-content {
-  background: rgba(255, 255, 255, 0.95);
-  border-radius: 20px;
-  padding: 35px 45px;
-  max-width: 850px;
-  width: 100%;
-  max-height: 90vh;
-  overflow-y: auto;
-  position: relative;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
-  transform: translateY(-25px);
-  opacity: 0;
-  animation: slideDown 0.4s forwards;
-}
-
-@keyframes slideDown {
+@keyframes slideUp {
+  from { transform: translateY(20px); opacity: 0; }
   to { transform: translateY(0); opacity: 1; }
 }
 
-/* ===========================
-   Close Button
-=========================== */
-.close-btn {
-  position: absolute;
-  top: 15px;
-  right: 20px;
-  background: #ff4d4d;
-  color: #fff;
-  border: none;
-  font-size: 18px;
-  padding: 6px 12px;
-  border-radius: 10px;
-  cursor: pointer;
-  font-weight: bold;
-  transition: all 0.25s ease;
-}
-
-.close-btn:hover {
-  background: #e60000;
-  transform: scale(1.2);
-  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-}
-
-/* ===========================
-   Modal Section Styling
-=========================== */
-.modal-section h1 {
-  font-size: 30px;
-  text-align: center;
-  margin-bottom: 25px;
-  color: #222;
-  font-weight: 700;
-  letter-spacing: 0.5px;
-}
-
-.modal-section p,
-.faq-item,
-.buy-steps li,
-.return-steps li,
-.contact-list li {
-  font-size: 16px;
-  color: #333;
-  line-height: 1.8;
-  margin: 10px 0;
-  transition: all 0.3s ease;
-}
-
-/* FAQ hover effect */
-.faq-item:hover {
-  background: rgba(29, 161, 242, 0.07);
-  border-radius: 10px;
-  padding-left: 8px;
-}
-
-/* FAQ heading */
-.faq-item h3 {
-  cursor: pointer;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-weight: 500;
-  font-size: 18px;
-  color: #1a1a1a;
-}
-
-/* Ordered lists for steps */
-.buy-steps, .return-steps {
-  padding-left: 30px;
-}
-
-/* Contact links */
-.contact-list a {
-  color: #1da1f2;
-  text-decoration: none;
-  transition: color 0.3s ease, transform 0.3s ease;
-}
-
-.contact-list a:hover {
-  color: #0d8ddb;
-  text-decoration: underline;
-  transform: translateX(3px);
-}
-
-/* Scrollbar styling */
-.modal-content::-webkit-scrollbar {
-  width: 8px;
-}
-
-.modal-content::-webkit-scrollbar-thumb {
-  background: rgba(29, 161, 242, 0.6);
-  border-radius: 6px;
-}
-
-.modal-content::-webkit-scrollbar-track {
-  background: rgba(0,0,0,0.05);
-}
-
-/* ===========================
-   Responsive Design
-=========================== */
+/* ====== RESPONSIVE ====== */
 @media (max-width: 768px) {
+  .footer {
+    padding: 40px 25px;
+    text-align: center;
+  }
+
   .footer-content {
     flex-direction: column;
-    gap: 25px;
+    align-items: center;
+  }
+
+  .footer-content h3::after {
+    left: 50%;
+    transform: translateX(-50%);
   }
 
   .modal-content {
-    padding: 25px 30px;
+    width: 95%;
+    padding: 25px;
   }
 
-  .modal-section h1 {
-    font-size: 26px;
-  }
-
-  .faq-item h3, .buy-steps li, .return-steps li, .contact-list li {
-    font-size: 15px;
-  }
-}
-
-@media (max-width: 480px) {
   .modal-section h1 {
     font-size: 22px;
-  }
-
-  .footer h3 {
-    font-size: 16px;
   }
 }

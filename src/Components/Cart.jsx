@@ -1,27 +1,27 @@
-//Cart.jsx
+// Cart.jsx
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './../App.css';
 import './Cart.css';
 
 const CartPage = () => {
   const [cart, setCart] = useState([]);
-  const [savedCart, setSavedCart] = useState([]); // store original data from localStorage
+  const navigate = useNavigate(); // Add this
 
   // Load cart from localStorage on mount
   useEffect(() => {
     const savedCartData = localStorage.getItem('cart');
     if (savedCartData) {
-      const parsed = JSON.parse(savedCartData);
-      setCart(parsed);
-      setSavedCart(parsed);
+      setCart(JSON.parse(savedCartData));
     }
   }, []);
 
   // Sync cart changes to localStorage 
   useEffect(() => {
-
     if (cart.length > 0) {
       localStorage.setItem('cart', JSON.stringify(cart));
+    } else {
+      localStorage.removeItem('cart');
     }
   }, [cart]);
 
@@ -42,27 +42,27 @@ const CartPage = () => {
   const handleRemoveItem = (id) => {
     const updatedCart = cart.filter(item => item.id !== id);
     setCart(updatedCart);
-    localStorage.setItem('cart', JSON.stringify(updatedCart)); 
   };
 
-  // "Clear Cart" 
+  const handleClearCart = () => {
+    setCart([]);
+    localStorage.removeItem('cart');
+  };
 
-const handleClearCart = () => {
-  setCart([]); // clear state
-  localStorage.removeItem('cart'); 
-};
- 
+  const handleCheckout = () => {
+    navigate('/checkout', { state: { cart } }); // Navigate and pass cart
+  };
+
+  // Helper function to show unit
+  const unit = (type) => (type === 'liquid' ? 'liter(s)' : 'gram(s)');
+
   return (
     <div className="cart-page-container">
       <div className="cart-page">
         <h2>Your Shopping Cart</h2>
 
         {cart.length === 0 ? (
-          <p className="empty-cart">
-            🛒 Your cart is empty.
-        
-           
-          </p>
+          <p className="empty-cart">🛒 Your cart is empty.</p>
         ) : (
           <>
             <div className="cart-grid">
@@ -74,8 +74,14 @@ const handleClearCart = () => {
                     <div className="cart-item-name">{item.name}</div>
 
                     <div className="cart-item-price">
-                      Rs.{item.price} × {item.quantity} = <strong>Rs.{item.price * item.quantity}</strong>
+                      Rs.{item.price} × {item.quantity} {unit(item.type)} = <strong>Rs.{item.price * item.quantity}</strong>
                     </div>
+
+                    {item.comment && (
+                      <div className="cart-item-comment">
+                        <strong>Comment:</strong> {item.comment}
+                      </div>
+                    )}
 
                     <div className="cart-quantity-control">
                       <button
@@ -105,17 +111,11 @@ const handleClearCart = () => {
             <div className="cart-buttons">
               <button
                 className="checkout-btn"
-              
+                onClick={handleCheckout} // Add onClick handler
               >
                 Checkout
               </button>
-
-              <button
-                className="clear-cart-btn"
-                onClick={handleClearCart}
-              >
-                Clear Cart
-              </button>
+              <button className="clear-cart-btn" onClick={handleClearCart}>Clear Cart</button>
             </div>
           </>
         )}
